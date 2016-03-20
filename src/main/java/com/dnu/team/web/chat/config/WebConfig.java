@@ -17,8 +17,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @ComponentScan("com.dnu.team.web.chat")
 @EnableWebMvc
-@Import({ WebAppSocketConfig.class })
-public class WebAppConfig extends WebMvcConfigurerAdapter {
+@Import({ SocketConfig.class })
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public UrlBasedViewResolver setupViewResolver() {

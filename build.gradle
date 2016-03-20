@@ -1,32 +1,31 @@
-buildscript {
-    repositories {
-        maven { url "http://repo.spring.io/libs-release" }
-        mavenLocal()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.6.RELEASE")
-    }
-}
-
 apply plugin: 'java'
-apply plugin: 'spring-boot'
 apply plugin: 'war'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
+version = '1.0'
+
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url "http://repo.spring.io/libs-release" }
 }
-bootRepackage {
-    enabled false
+
+ext {
+    springVersion = '4.2.2.RELEASE';
 }
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-websocket")
-    compile("org.springframework:spring-messaging")
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-    compile 'jstl:jstl:1.2'
+    compile group: 'org.springframework', name: 'spring-messaging', version:springVersion
+    compile group: 'org.springframework', name: 'spring-aspects', version:springVersion
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.37'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.3.0'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.2.3'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+    compile group: 'org.springframework', name:'spring-webmvc', version: springVersion
+    compile group: 'org.springframework', name:'spring-context', version: springVersion
+    compile group: 'org.springframework', name:'spring-core', version: springVersion
+    compile group: 'org.springframework', name:'spring-beans', version: springVersion
+    compile group: 'org.springframework', name:'spring-jdbc', version: springVersion
+    compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    compile group: 'jstl', name:'jstl', version:'1.2'
 }
